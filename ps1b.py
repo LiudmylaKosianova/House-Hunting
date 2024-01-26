@@ -22,8 +22,8 @@ portion_saved = float(user_input) / 100
 user_input = input("Enter the cost of your dream home: ")
 total_cost = float(user_input)
 
-user_input = input("Enter your semi-annual pay raise: ")
-semi_anual_raise = float(user_input)
+user_input = input("Enter your semi-annual pay raise percent: ")
+semi_anual_raise = float(user_input) / 100
 
 down_payment = total_cost * portion_down_payment #down payment amount that the user wants to save for
 monthly_salary = annual_salary / 12 #calculate the monthly salary of the user
@@ -35,6 +35,10 @@ count = 0
 while down_payment > current_savings:
     current_savings += (current_savings * (r/12)) + base
     count += 1
+    if count%6 == 0:
+        monthly_salary += monthly_salary*semi_anual_raise
+        base = portion_saved * monthly_salary
+
     
 print("Number of months: ", count)
   
