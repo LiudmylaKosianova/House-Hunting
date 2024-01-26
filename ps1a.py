@@ -7,9 +7,10 @@ The programm assumes the user has some investments that return 4% annually.
 
 annual_salary = 0.0
 monthly_salary = annual_salary / 12 
-portion_saved = 0.0 #a portion of salary to be saved every month
+portion_saved = 0.0 #percent of salary to be saved every month
 total_cost = 0.0 #cost of a house
 portion_down_payment = 0.25 #the portion of a cost needed for the down payment is 25%
+current_savings = 0.0
 r = 0.04 #annual return from the current_savings investments
 
 user_input = input("Enter your annual salary: ")
@@ -21,4 +22,18 @@ portion_saved = float(user_input) / 100
 user_input = input("Enter the cost of your dream home: ")
 total_cost = float(user_input)
 
+down_payment = total_cost * portion_down_payment #down payment amount that the user wants to save for
+monthly_salary = annual_salary / 12 #calculate the monthly salary of a user
+base = portion_saved * monthly_salary #calculate the base amount to be saved every month
+
+count = 0
+
+print(current_savings, count)
+while down_payment > current_savings:
+    current_savings += (current_savings * (r/12)) + base
+    count += 1
+    #print(current_savings, count)
+
+print(count)    
+    
 
