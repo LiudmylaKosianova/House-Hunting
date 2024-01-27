@@ -11,9 +11,7 @@ The programm assumes, that
 annual_salary = 0.0 # user's annual salary will be entered by the user
 total_cost = 0.0 #cost of a house will be entered by the user
 down_payment = total_cost * 0.25 #the amount of money the user needs for downpayment
-r = 0.04 #annual return from the current_savings investments
-semi_anual_raise = 0.7 #pay raise the user gets every half of the year
-
+monthly_salary = 0.0 #will be calculated after user gives input
 
 
 user_input = input("Enter your annual salary: ")
@@ -21,23 +19,24 @@ annual_salary = float(user_input)
 
 user_input = input("Enter the cost of your dream home: ")
 total_cost = float(user_input)
+down_payment = total_cost * 0.25
 
- 
+def calc_months (a,b,c):
+    down_payment = a
+    monthly_salary = b
+    portion_to_save = c
 
+    count = 0
+    current_savings = 0.0
+    base = portion_to_save * monthly_salary  
 
-monthly_salary = annual_salary / 12 #calculate the monthly salary of the user
-#base = portion_saved * monthly_salary #calculate the base amount to be saved every month
-current_savings = 0.0
+    while down_payment > current_savings:
+        current_savings += (current_savings * (0.4/12)) + base
+        count += 1
+        if count%6 == 0:
+            monthly_salary += monthly_salary*0.7
+            base = portion_to_save * monthly_salary
 
-count = 0
+    return count
 
-while down_payment > current_savings:
-    current_savings += (current_savings * (r/12)) + base
-    count += 1
-    if count%6 == 0:
-        monthly_salary += monthly_salary*semi_anual_raise
-        base = portion_saved * monthly_salary
-
-    
-print("Number of months: ", count)
 
