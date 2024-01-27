@@ -10,7 +10,7 @@ The programm assumes, that
 
 annual_salary = 0.0 # user's annual salary will be entered by the user
 total_cost = 0.0 #cost of a house will be entered by the user
-down_payment = total_cost * 0.25 #the amount of money the user needs for downpayment
+down_payment = total_cost * 0.25 #the amount of money the user needs for downpayment 
 monthly_salary = 0.0 #will be calculated after user gives input
 
 
@@ -39,4 +39,10 @@ def calc_months (a,b,c):
 
     return count
 
+def calc_portion (a,b):
+    down_payment = a
+    monthly_salary = b
+
+    portion_list = sorted(range(1,101))#create a sorted list in range 1-100 representing percents
+    
 
