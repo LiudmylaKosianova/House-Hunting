@@ -46,16 +46,16 @@ def calc_portion (a,b):
     down_payment = a
     monthly_salary = b
 
-    portion_list = sorted(range(1,101))#create a sorted list in range 1-100 representing percents
+    portion_list = sorted(range(0,10000))#create a sorted list in range 1-100 representing percents
     low = 0 #index for searching in the list
     high = len(portion_list) - 1 #index for searching in the list
 
     while low <= high:
         mid = (low + high) // 2 
 
-        portion_to_save = portion_list[mid] / 100
+        portion_to_save = portion_list[mid] / 10000
         N_months = calc_months(down_payment,monthly_salary,portion_to_save)
-        print("/t number of months is ...", N_months)
+        
 
         if N_months == 36:
             return portion_to_save
@@ -66,6 +66,7 @@ def calc_portion (a,b):
     return -1
 
 portion = calc_portion (down_payment,monthly_salary)
-print("The recomended portion to save: ", portion)
+portion_print = "{:.2f}".format(portion*100)
+print("The recomended portion to save: ", portion_print, "%")
 
 
