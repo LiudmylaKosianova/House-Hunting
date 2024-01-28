@@ -8,21 +8,21 @@ The programm assumes, that
 - the downpayment amount is 25% of the house price
 """
 
-annual_salary = 0.0 # user's annual salary will be entered by the user
-total_cost = 0.0 #cost of a house will be entered by the user
-down_payment = total_cost * 0.25 #the amount of money the user needs for downpayment 
-monthly_salary = 0.0 #will be calculated after user gives input
-
+print("Welcome to savings calculator!\n")
 
 user_input = input("Enter your annual salary: ")
-annual_salary = float(user_input)
-monthly_salary = annual_salary / 12
-print("Your monthly salary is: ", monthly_salary)
+annual_salary = float(user_input) #user's annual salary
+monthly_salary = annual_salary / 12 #calculate user's monthly salary
+print("\tYour monthly salary is: ", monthly_salary)
+print("\tI assume you have a pay raise of 7% every half a year.")
+print("\tI also assume you make wise investments that return 4% annually.")
+
 
 user_input = input("Enter the cost of your dream home: ")
-total_cost = float(user_input)
-down_payment = total_cost * 0.25
-
+total_cost = float(user_input) #the total cost of the house
+down_payment = total_cost * 0.25 #the downpayment that the user needs to save up for 
+print("\tYou need to save ", down_payment, " in three years time.")
+ 
 def calc_months (down_payment,monthly_salary,portion_to_save):
     down_payment = down_payment
     monthly_salary = monthly_salary
