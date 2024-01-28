@@ -16,15 +16,17 @@ monthly_salary = 0.0 #will be calculated after user gives input
 
 user_input = input("Enter your annual salary: ")
 annual_salary = float(user_input)
+monthly_salary = annual_salary / 12
+print("Your monthly salary is: ", monthly_salary)
 
 user_input = input("Enter the cost of your dream home: ")
 total_cost = float(user_input)
 down_payment = total_cost * 0.25
 
-def calc_months (a,b,c):
-    down_payment = a
-    monthly_salary = b
-    portion_to_save = c
+def calc_months (down_payment,monthly_salary,portion_to_save):
+    down_payment = down_payment
+    monthly_salary = monthly_salary
+    portion_to_save = portion_to_save
 
     count = 0
     current_savings = 0.0
@@ -39,10 +41,31 @@ def calc_months (a,b,c):
 
     return count
 
+
 def calc_portion (a,b):
     down_payment = a
     monthly_salary = b
 
     portion_list = sorted(range(1,101))#create a sorted list in range 1-100 representing percents
-    
+    low = 0 #index for searching in the list
+    high = len(portion_list) - 1 #index for searching in the list
+
+    while low <= high:
+        mid = (low + high) // 2 
+
+        portion_to_save = portion_list[mid] / 100
+        N_months = calc_months(down_payment,monthly_salary,portion_to_save)
+        print("/t number of months is ...", N_months)
+
+        if N_months == 36:
+            return portion_to_save
+        elif N_months > 36:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+portion = calc_portion (down_payment,monthly_salary)
+print("The recomended portion to save: ", portion)
+
 
