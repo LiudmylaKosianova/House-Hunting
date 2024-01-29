@@ -23,7 +23,20 @@ total_cost = float(user_input) #the total cost of the house
 down_payment = total_cost * 0.25 #the downpayment that the user needs to save up for 
 print("\tYou need to save ", down_payment, " in three years time.")
  
+
 def calc_months (down_payment,monthly_salary,portion_to_save):
+
+    """
+    Calculates how many months is needed to save up for the downpayment
+    Parameters:
+    -down_payment is an amount of money that should be paid
+    -monthly_salary is actual salary per month
+    -portion_to_save is a percentage of monthly salary that is to be saved
+    Returns:
+    number of months needed to save up for the downpayment
+    """
+
+
     down_payment = down_payment
     monthly_salary = monthly_salary
     portion_to_save = portion_to_save
@@ -42,11 +55,20 @@ def calc_months (down_payment,monthly_salary,portion_to_save):
     return count
 
 
-def calc_portion (a,b):
-    down_payment = a
-    monthly_salary = b
+def calc_portion (down_payment,monthly_salary):
 
-    portion_list = sorted(range(0,10000))#create a sorted list in range 1-100 representing percents
+    """
+    Implements binary search to find the right amount to save 
+    Parameters:
+    -down_payment is an amount of money that should be paid
+    -monthly_salary is actual salary per month    
+    Returns:
+    percent of the monthly salary to save in order to save up for the downpayment in 36 months
+    """
+    down_payment = down_payment
+    monthly_salary = monthly_salary
+
+    portion_list = sorted(range(0,10000))#create a sorted list in range 0-10000 representing percents
     low = 0 #index for searching in the list
     high = len(portion_list) - 1 #index for searching in the list
 
@@ -67,6 +89,6 @@ def calc_portion (a,b):
 
 portion = calc_portion (down_payment,monthly_salary)
 portion_print = "{:.2f}".format(portion*100)
-print("The recomended portion to save: ", portion_print, "%")
+print("\tThe recomended portion to save: ", portion_print, "%")
 
 
