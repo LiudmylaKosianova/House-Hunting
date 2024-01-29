@@ -46,10 +46,10 @@ def calc_months (down_payment,monthly_salary,portion_to_save):
     base = portion_to_save * monthly_salary  
 
     while down_payment > current_savings:
-        current_savings += (current_savings * (0.4/12)) + base
+        current_savings += (current_savings * (0.04/12)) + base
         count += 1
         if count%6 == 0:
-            monthly_salary += monthly_salary*0.7
+            monthly_salary += monthly_salary*0.07
             base = portion_to_save * monthly_salary
 
     return count
